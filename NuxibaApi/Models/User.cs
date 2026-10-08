@@ -1,14 +1,20 @@
-﻿namespace NuxibaApi.Models
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace NuxibaApi.Models
 {
+    [Table("ccUsers")]
     public class User
     {
-        public int IdUser { get; set; }
-        public string Username { get; set; } = string.Empty;
-        public string FirstName { get; set; } = string.Empty;
-        public string LastName { get; set; } = string.Empty;
-        public string? Email { get; set; }
+        [Key]
+        public int id { get; set; }
+        public string? Login { get; set; }
+        public string? Nombres { get; set; }
+        public string? ApellidoPaterno { get; set; }
+        public string? ApellidoMaterno { get; set; }
         public int? IdArea { get; set; }
 
+        [ForeignKey("IdArea")]
         public Area? Area { get; set; }
     }
 }
